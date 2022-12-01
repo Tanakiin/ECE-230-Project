@@ -1,2 +1,2 @@
 ieee
-print("Hello world")
+print("Hello VHDL");
