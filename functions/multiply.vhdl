@@ -10,7 +10,7 @@ entity multiply is
 end entity multiply;
 
 architecture Structure of multiply is
-    component myfulladder
+    component adder
         port ( 
             A: in  STD_LOGIC_VECTOR (3 downto 0);
             B: in  STD_LOGIC_VECTOR (3 downto 0);
@@ -29,11 +29,11 @@ begin
     Y0 <= ('0', x(3) and y(0), x(2) and y(0), x(1) and y(0));
 
 cell_1: 
-    myfulladder port map (a => X0, b => Y0, cin => '0', cout => Y1(3), S(3) => Y1(2), S(2) => Y1(1), S(1) => Y1(0), S(0) => p(1));
+    adder port map (a => X0, b => Y0, cin => '0', cout => Y1(3), S(3) => Y1(2), S(2) => Y1(1), S(1) => Y1(0), S(0) => p(1));
 cell_2: 
-    myfulladder port map (a => X1, b => Y1, cin => '0', cout => Y2(3), S(3) => Y2(2), S(2) => Y2(1), S(1) => Y2(0), S(0) => p(2));
+    adder port map (a => X1, b => Y1, cin => '0', cout => Y2(3), S(3) => Y2(2), S(2) => Y2(1), S(1) => Y2(0), S(0) => p(2));
 cell_3: 
-    myfulladder port map (a => X2, b => Y2, cin => '0', cout => p(7), S => p(6 downto 3));
+    adder port map (a => X2, b => Y2, cin => '0', cout => p(7), S => p(6 downto 3));
     p(0) <= x(0) and y(0); 
 
 end Structure;
