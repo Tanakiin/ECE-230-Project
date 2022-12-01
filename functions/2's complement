@@ -11,6 +11,6 @@ architecture Behavioral of compliment is
 
 begin
 
-    cout <= (not)cin + "0001";
+    y <= not(x) + "0001";
 
 end Behavioral;
