@@ -1,13 +1,13 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
-entity compliment is
+entity twoscompliment is
     Port ( x : in STD_LOGIC_VECTOR ( 3 downto 0);
            y: out STD_LOGIC_VECTOR ( 3 downto 0)
     );
-end compliment;
+end twoscompliment;
 
-architecture Behavioral of compliment is
+architecture Behavioral of twoscompliment is
 
 begin
 
