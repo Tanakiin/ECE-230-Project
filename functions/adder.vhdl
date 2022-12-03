@@ -6,7 +6,8 @@ entity adder is
            y : in STD_LOGIC;
            cin : in STD_LOGIC;
            sum : out STD_LOGIC;
-           cout : out STD_LOGIC);
+           cout : out STD_LOGIC
+           );
 end adder;
 
 architecture Behavioral of adder is
