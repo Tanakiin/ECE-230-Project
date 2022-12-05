@@ -14,8 +14,7 @@ architecture Behavioral of adder is
 
 begin
 
-    y <= (not)y
-    sum <= (cin nor x) nor y  ;
+    sum <= cin xor x xor y  ;
     cout <= (cin and x) or (x and y) or (cin and y);
 
 end Behavioral;
