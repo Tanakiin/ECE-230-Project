@@ -34,7 +34,6 @@ end component;
 begin
 
     Stage0: compliment port map(x=> xin, y=> c0);
-    Stage1: fulladder port map (x=> c0, y=>n, cin => '0', sum => result, cout => flag);
+    Stage1: fulladder port map (x=> c0, y=>"0001",  cin => '0', sum => result, cout => flag);
 
 end behavioral;
-
