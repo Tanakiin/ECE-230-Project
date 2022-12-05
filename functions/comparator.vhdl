@@ -14,11 +14,11 @@ begin
 process(x,y)
 begin
 if (x >= y) then
-result <= "1111";
-flag <= '1';
-else
 result <= "0000";
 flag <= '0';
+else
+result <= "1111";
+flag <= '1';
 
 end if;
 end process;
