@@ -16,7 +16,7 @@ begin
 PROCESS (Flag)
 BEGIN
 IF Flag = '1' THEN
-Result <= "1111"; -- If A<B, Result is 1111
+Result <= "1111"; --If A<B, Result is 1111
 ELSE
 Result <= "0000"; --If A>= B, Result is 0000
 END IF;
