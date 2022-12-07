@@ -3,7 +3,8 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity increment is
     Port ( x : in STD_LOGIC_VECTOR ( 3 downto 0);
-           y: out STD_LOGIC_VECTOR ( 3 downto 0)
+           result: out STD_LOGIC_VECTOR ( 3 downto 0);
+           flag : out STD_LOGIC;
     );
 end increment;
 
@@ -21,6 +22,6 @@ end component;
 
 begin
 
-    Stage0 : fulladder port map (x=> x(0), y=>"0001", cin => '0', sum => y, cout => flag);
+    Stage0 : fulladder port map (x=> x, y=>"0001", cin => '0', sum => result, cout => flag);
 
 end Behavioral;

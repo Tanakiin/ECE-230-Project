@@ -2,14 +2,14 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
 
-entity wt_comp_1 is
+entity wt_comparator is
     Port ( A : in STD_LOGIC_VECTOR (3 downto 0);
            B : in STD_LOGIC_VECTOR (3 downto 0);
            Flag : inout STD_LOGIC;
            Result : inout STD_LOGIC_VECTOR (3 downto 0));
-end wt_comp_1;
+end wt_comparator;
 
-architecture Behavioral of wt_comp_1 is
+architecture Behavioral of wt_comparator is
 
 begin
 
