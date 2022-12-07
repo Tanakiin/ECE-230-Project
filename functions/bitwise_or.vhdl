@@ -5,7 +5,8 @@ entity bitwise_or is
     Port ( A : in STD_LOGIC_VECTOR (3 downto 0);
            B : in STD_LOGIC_VECTOR (3 downto 0);
            Result : inout STD_LOGIC_VECTOR (3 downto 0);
-           Flag : out STD_LOGIC);
+           Flag : out STD_LOGIC
+           );
 end bitwise_or;
 
 architecture Behavioral of bitwise_or is
