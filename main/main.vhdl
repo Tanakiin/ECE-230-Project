@@ -1,2 +1,1 @@
-ieee
-print("Hello VHDL");
+-- main fucntion goes in HERE! ALU to be designed
