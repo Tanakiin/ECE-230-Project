@@ -4,8 +4,8 @@ use IEEE.STD_LOGIC_1164.ALL;
 entity increment is
     Port ( x : in STD_LOGIC_VECTOR ( 3 downto 0);
            result: out STD_LOGIC_VECTOR ( 3 downto 0);
-           flag : out STD_LOGIC
-    );
+           flag : out STD_LOGIC);
+    
 end increment;
 
 architecture Behavioral of increment is

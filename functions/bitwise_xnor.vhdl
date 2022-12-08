@@ -1,15 +1,15 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
-entity bitwise_or is
+entity bitwise_xnor is
     Port ( A : in STD_LOGIC_VECTOR (3 downto 0);
            B : in STD_LOGIC_VECTOR (3 downto 0);
            Result : inout STD_LOGIC_VECTOR (3 downto 0);
            Flag : out STD_LOGIC
            );
-end bitwise_or;
+end bitwise_xnor;
 
-architecture Behavioral of bitwise_or is
+architecture Behavioral of bitwise_xnor is
 
 begin
     
