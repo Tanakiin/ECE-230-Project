@@ -174,14 +174,53 @@ ALU: process(CLK, RESET) begin
         flag <= '0';
     end if;
     if rising_edge(clk) then
-        if load = '1' then
-            
             case SEL is
     --            when "0000" =>
                 when "0001" => 
                     result<=a_comp;
-                when "0010"=>
-                    result
+                    flag<='0';
+                when "0010" => 
+                    result<=b_comp;
+                    flag<='0';
+                when "0011" => 
+                    result<=A_TwoComp;
+                    flag<=A_TwoComp_Flag;
+                when "0100" => 
+                    result<=B_TwoComp;
+                    flag<=B_TwoComp_Flag;
+                when "0101" => 
+                    result<=A_Inc;
+                    flag<=A_Inc_Flag;
+                when "0110" => 
+                    result<=B_Inc;
+                    flag<=B_Inc_Flag;
+                when "0111" => 
+                    result<=add_result;
+                    flag<=add_flag;
+                when "1000" => 
+                    result<=sub_result;
+                    flag<=sub_flag;
+                when "1001" => 
+                    result<=mul_result;
+                    flag<=mul_flag;
+                when "1010" => 
+                    result<=wt_comp_result;
+                    flag<=wt_flag;
+                when "1011" => 
+                    result<=com_result;
+                    flag<=com_flag;
+                when "1100" => 
+                    result<=b_and_result;
+                    flag<=b_and_flag;
+                when "1101" => 
+                    result<=b_or_result;
+                    flag<=b_or_flag;
+                when "1110" => 
+                    result<=b_xor_result;
+                    flag<=b_xor_flag;
+                when "1111" => 
+                    result<=b_xnor_result;
+                    flag<=b_xnor_flag;
             end case;
         else
             result<="0000";
