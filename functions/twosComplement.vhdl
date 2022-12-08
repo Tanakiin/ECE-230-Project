@@ -25,7 +25,7 @@ component fulladder
         );
 end component;
 
-component compliment is
+component complement is
     Port ( x : in STD_LOGIC_VECTOR ( 3 downto 0);
            y: out STD_LOGIC_VECTOR ( 3 downto 0)
     );
@@ -33,7 +33,7 @@ end component;
 
 begin
 
-    Stage0: compliment port map(x=> x, y=> c0);
+    Stage0: complement port map(x=> x, y=> c0);
     Stage1: fulladder port map (x=> c0, y=>"0001",  cin => '0', sum => result, cout => flag);
 
 end behavioral;
