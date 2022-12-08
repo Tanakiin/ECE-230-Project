@@ -112,8 +112,8 @@ architecture Structure of toplevel is
         );
     end component; 
 
-    signal A_Comp, B_comp, A_TwoComp, B_TwoComp, A_Inc, B_Inc, add_result, sub_result, mul_result, com_result, b_and_result, b_or_result, b_xor_result, b_xnor_result : STD_LOGIC_VECTOR;
-    signal A_TwoComp_Flag, B_TwoComp_Flag, A_Inc_Flag, B_Inc_Flag, add_flag, sub_flag, mul_flag, com_flag, b_and_flag, b_or_flag, b_xor_flag, b_xnor_flag : STD_LOGIC;
+    signal A_Comp, B_comp, A_TwoComp,wt_comp_result, B_TwoComp, A_Inc, B_Inc, add_result, sub_result, mul_result, com_result, b_and_result, b_or_result, b_xor_result, b_xnor_result : STD_LOGIC_VECTOR;
+    signal A_TwoComp_Flag, B_TwoComp_Flag, A_Inc_Flag, B_Inc_Flag, add_flag, sub_flag, mul_flag, com_flag, b_and_flag, b_or_flag, b_xor_flag ,wt_flag, b_xnor_flag : STD_LOGIC;
 
     
 begin
@@ -131,7 +131,7 @@ begin
  Tcomp1: twoscomplement port map ( x=> A, result => A_TwoComp, flag => A_TwoComp_Flag);
 
   --two'comp B
- Tcomp2: twoscomplement port map ( x=> C, result => B_TwoComp, flag => B_TwoComp_Flag);
+ Tcomp2: twoscomplement port map ( x=> B, result => B_TwoComp, flag => B_TwoComp_Flag);
 
  --increment A
  inc1: increment port map (x => A, result => A_Inc, flag=> A_Inc_Flag); 
@@ -143,7 +143,7 @@ begin
  add: fulladder port map(x => A,y => B, cin => '0', sum => add_result, cout => add_flag); 
 
   -- subtraction
- add: fulladder port map(x => A,y => B_comp, cin => '0', sum => sub_result, cout => sub_flag); 
+ sub: fulladder port map(x => A,y => B_comp, cin => '0', sum => sub_result, cout => sub_flag); 
 
  -- multiplicaton
  mul : multiply  port map (x => A, y => B, p => mul_result, flag => mul_flag );
@@ -174,8 +174,8 @@ ALU: process(CLK, RESET) begin
             case SEL is
     --            when "0000" =>
                 when "0001" => 
-                    stage1: complement port map( x => A, y => RESULT);
-                when others =>
+                    result<=a_comp;
+
             end case;
 
     end if;
