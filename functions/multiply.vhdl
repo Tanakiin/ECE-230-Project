@@ -1,34 +1,42 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
-entity fulladder is
-    Port ( x : in STD_LOGIC_VECTOR (3 downto 0);
-           y : in STD_LOGIC_VECTOR (3 downto 0);
-           cin : in STD_LOGIC;
-           sum : out STD_LOGIC_VECTOR (3 downto 0);
-           cout : out STD_LOGIC
-          );
-end fulladder;
+entity multiply is
+    port (
+        x: in  STD_LOGIC_VECTOR (3 downto 0);
+        y: in  STD_LOGIC_VECTOR (3 downto 0);
+        p: inout STD_LOGIC_VECTOR (7 downto 0);
+        mult: out STD_LOGIC_VECTOR (3 downto 0);
+        flag: out STD_LOGIC);
+end entity multiply;
 
-architecture Behavioral of fulladder is
+architecture Structure of multiply is
+    component fulladder
+        port (
+            x: in  STD_LOGIC_VECTOR (3 downto 0);
+            y: in  STD_LOGIC_VECTOR (3 downto 0);
+            Cin: in  std_logic;
+            Sum: out STD_LOGIC_VECTOR (3 downto 0);
+            Cout: out std_logic);
+    end component;
 
-component adder
-port(
-     x : in STD_LOGIC;
-     y : in STD_LOGIC;
-     cin : in STD_LOGIC;
-     sum : out STD_LOGIC;
-     cout : out std_logic
-);
-end component;
-
-signal c0,c1,c2 : std_logic;
+    signal X0, X1, X2:  STD_LOGIC_VECTOR (3 downto 0);
+    signal Y0, Y1, Y2:  STD_LOGIC_VECTOR (3 downto 0);
 
 begin
+    X0 <= (x(3) and y(1), x(2) and y(1), x(1) and y(1), x(0) and y(1));
+    X1 <= (x(3) and y(2), x(2) and y(2), x(1) and y(2), x(0) and y(2));
+    X2 <= (x(3) and y(3), x(2) and y(3), x(1) and y(3), x(0) and y(3));
+    Y0 <= ('0', x(3) and y(0), x(2) and y(0), x(1) and y(0));
 
-Stage0: adder port map (x => x(0), y=> y(0), cin => cin, sum => sum(0), cout=> c0);
-Stage1: adder port map (x => x(1), y=> y(1), cin => c0, sum => sum(1), cout=> c1);
-Stage2: adder port map (x => x(2), y=> y(2), cin => c1, sum => sum(2), cout=> c2);
-Stage3: adder port map (x => x(3), y=> y(3), cin => c2, sum => sum(3), cout=> cout);
+cell_1:
+    fulladder port map (x => X0, y => Y0, cin => '0', cout => Y1(3), Sum(3) => Y1(2), Sum(2) => Y1(1), Sum(1) => Y1(0), Sum(0) => p(1));
+cell_2:
+    fulladder port map (x => X1, y => Y1, cin => '0', cout => Y2(3), Sum(3) => Y2(2), Sum(2) => Y2(1), Sum(1) => Y2(0), Sum(0) => p(2));
+cell_3:
+    fulladder port map (x => X2, y => Y2, cin => '0', cout => p(7), Sum => p(6 downto 3));
+    p(0) <= x(0) and y(0);
+    mult <= p(3 downto 0);
+    flag <= p(7) or p(6) or p(5) or p(4);
 
-end Behavioral;
+end Structure;
