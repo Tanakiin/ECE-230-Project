@@ -174,8 +174,11 @@ ALU: process(CLK, RESET) begin
         flag <= '0';
     end if;
     if rising_edge(clk) then
+        if load = '1' then
             case SEL is
-    --            when "0000" =>
+                when "0000" =>
+                    result<="0000";
+                    flag <= '0';
                 when "0001" => 
                     result<=a_comp;
                     flag<='0';
